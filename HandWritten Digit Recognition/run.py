@@ -8,7 +8,7 @@ model = tf.keras.models.load_model("Models/digit_recog_cnn_model.keras")
 
 # Defining function to convert image to grayscale and resize  
 def preprocess_image(image_path):  
-    img = im.open(image_path).convert('L')  # Convert image to grayscale  
+    img = im.open(image_path).convert('L')  # Convert image to grayscale  (it means the channels will go from 3 to 1 and can be reshaped)
     img_resized = img.resize((28, 28), im.LANCZOS)  # Resize it to 28x28
     image_array = np.array(img_resized).reshape(1, 28, 28, 1) / 255.0  # Reshape and normalize the image  
     return image_array  
